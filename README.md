@@ -7,7 +7,7 @@ The idea behind this gem came when working with docker-compose deployments. I re
 ### Installation
 
   1. Ensure you already have `capistrano` gem in your project, with version at least `3.7`
-  2. Ensure that the user you are using to connect with the server has at least `web` role:
+  2. Ensure that the user you are using to connect with the server has `web` role:
   
       ```
       server "<server>", user: "capistrano", roles: %w{web}
