@@ -7,6 +7,11 @@ The idea behind this gem came when working with docker-compose deployments. I re
 ### Installation
 
   1. Ensure you already have `capistrano` gem in your project, with version at least `3.7`
+  2. Ensure that the user you are using to connect with the server has at least `web` role:
+  
+      ```
+      server "<server>", user: "capistrano", roles: %w{web}
+      ```
   2. Add the following line to your `Gemfile`: `gem 'capose', require: false`
   3. Add the following file to `Capfile`: `require 'capose'`
 
