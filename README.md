@@ -12,8 +12,8 @@ The idea behind this gem came when working with docker-compose deployments. I re
       ```
       server "<server>", user: "capistrano", roles: %w{web}
       ```
-  2. Add the following line to your `Gemfile`: `gem 'capose', require: false`
-  3. Add the following file to `Capfile`: `require 'capose'`
+  3. Add the following line to your `Gemfile`: `gem 'capose', require: false`
+  4. Add the following file to `Capfile`: `require 'capose'`
 
 This gem will automatically hook up to the capistrano after `deploy:updated` hook to perform the deployment via `capose:deploy` hook
 
