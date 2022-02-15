@@ -4,7 +4,8 @@ end
 
 namespace :capose do
   def _project
-    return "" if fetch(:capose_project).nil?
+    return '' if fetch(:capose_project).nil?
+
     "-p #{fetch(:capose_project)}"
   end
 
@@ -13,15 +14,15 @@ namespace :capose do
 
     Array(fetch(:capose_file)).each { |file| cmd << ["-f #{file}"] }
 
-    cmd.join(" ")
+    cmd.join(' ')
   end
 
   def _command(command)
-    [_project, _files, command].join(" ")
+    [_project, _files, command].join(' ')
   end
 
   task :command do
-    _cmd = ENV["CAPOSE_COMMAND"]
+    _cmd = ENV['CAPOSE_COMMAND']
     if _cmd.nil?
       puts "Usage: CAPOSE_COMMAND='command' bundle exec cap #{fetch(:stage)} capose:command"
       exit 1
@@ -29,7 +30,7 @@ namespace :capose do
 
     on roles(fetch(:capose_role)) do
       within current_path do
-        execute :"docker-compose", _command(ENV["CAPOSE_COMMAND"])
+        execute :"docker compose", _command(ENV['CAPOSE_COMMAND'])
       end
     end
   end
@@ -37,7 +38,7 @@ namespace :capose do
   task :stop do
     on roles(fetch(:capose_role)) do
       within current_path do
-        execute :"docker-compose", _command("stop")
+        execute :"docker compose", _command('stop')
       end
     end
   end
@@ -55,7 +56,7 @@ namespace :capose do
       within release_path do
         with fetch(:capose_env) do
           fetch(:capose_commands).each do |command|
-            execute :"docker-compose", _command(command)
+            execute :"docker compose", _command(command)
           end
         end
       end
@@ -71,6 +72,6 @@ namespace :load do
     set :capose_file,    -> { ["docker-compose-#{fetch(:stage)}.yml"] }
     set :capose_env,     -> { {} }
 
-    set :capose_commands, -> { ["build", "up -d"] }
+    set :capose_commands, -> { ['build', 'up -d'] }
   end
 end

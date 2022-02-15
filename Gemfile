@@ -1,8 +1,8 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
 # Specify your gem's dependencies in capistrano.gemspec
 gemspec
 
-gem "rspec"
-gem "rspec-core"
-gem "pry"
+gem 'pry'
+gem 'rspec'
+gem 'rspec-core'
